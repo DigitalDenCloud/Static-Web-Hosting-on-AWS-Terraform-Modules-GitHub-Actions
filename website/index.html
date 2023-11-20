@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+      <!-- Font Awesome 5.15.1 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <!-- CSS Style Sheet -->
+  <link rel="stylesheet" href="resources/css/style.css">
+</head>
+
+<body onload="updateCounter()">
+  <div class="overlay"></div>
+
+  <!-- Star Background -->
+  <div class="stars" aria-hidden="true"></div>
+  <div class="starts2" aria-hidden="true"></div>
+  <div class="stars3" aria-hidden="true"></div>
+
+  <!-- Main Content -->
+<main class="main">
+  <section class="contact">
+    <div class="header">
+      <img src="resources/images/digitalden.png" class="shake-image" alt="Portrait of Digital Den">
+      <h1 class="title">Digital Den</h1>
+    </div>
+    <h2 class="sub-title">Cloud Engineer</h2>
+    
+    <div class="wrapper">
+      <a href="https://www.linkedin.com/in/digitalden/" class="icon linkedin" target="_blank">
+        <div class="tooltip">LinkedIn</div>
+        <span><i class="fab fa-linkedin"></i></span>
+      </a>
+      
+      <a href="https://github.com/digitalden3" class="icon github" target="_blank">
+        <div class="tooltip">Github</div>
+        <span><i class="fab fa-github"></i></span>
+      </a>
+      
+      <a href="https://www.credly.com/users/denizyilmaz-ce/badges" class="icon aws" target="_blank">
+        <div class="tooltip">Certs</div>
+        <span><i class="fab fa-aws"></i></span>
+      </a>
+
+      <a href="https://www.youtube.com/@digitalden3" class="icon youtube" target="_blank">
+        <div class="tooltip">Demos</div>
+        <span><i class="fab fa-youtube"></i></span>
+      </a>
+
+      <a href="https://blog.digitalden.cloud/" class="icon medium" target="_blank">
+        <div class="tooltip">Blog</div>
+        <span><i class="fab fa-medium"></i></span>
+      </a>
+      
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+  <footer class="footer">
+    <div style="text-align: center;">
+      <span style="font-size: 20px;">Visits: <span id="hits"></span></span>
+    </div>
+    <div class="aws-logo">
+      <img src="resources/images/AWSLogo.png" alt="AWS Logo" style="width: 80px; height: auto;">
+    </div>
+  </footer>
+
+  <!-- Update Counter JS -->
+  <script type = "text/javascript">
+    var apiUrl = "https://0qrguua9jg.execute-api.eu-west-2.amazonaws.com/Prod/put";
+      fetch(apiUrl)
+      .then(() => fetch("https://0qrguua9jg.execute-api.eu-west-2.amazonaws.com/Prod/get"))
+      .then(response => response.json())
+      .then(data =>{
+          document.getElementById('hits').innerHTML = data
+    console.log(data)});
+  </script>
+
+</body>
+</html>
