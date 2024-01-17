@@ -57,3 +57,19 @@ jobs:
           AWS_S3_BUCKET: "denizyilmaz.cloud"
           AWS_REGION: "us-east-1"
           SOURCE_DIR: "./website"
+
+  Invalidate_CloudFront:
+    name: Invalidate CloudFront Distribution
+    needs: Sync_S3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Invalidate CloudFront
+        uses: chetan/invalidate-cloudfront-action@v2
+
+        env:
+          DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
